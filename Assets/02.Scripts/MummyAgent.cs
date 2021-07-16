@@ -55,6 +55,28 @@ public class MummyAgent : Agent
     {
         var action = actions.DiscreteActions;
         Debug.Log($"[0]={action[0]}, [1]={action[1]}");
+
+        Vector3 dir = Vector3.zero;
+        Vector3 rot = Vector3.zero;
+
+        // Branch 0 전진 후진을 판단
+        switch (action[0])
+        {
+            case 1: dir = tr.forward; break;
+            case 2: dir = -tr.forward; break;
+        }
+
+        // Branch 1 좌우 회전을 판단
+        switch (action[1])
+        {
+            case 1: rot = -tr.up; break;
+            case 2: rot = tr.up; break;
+        }
+
+        tr.Rotate(rot, Time.fixedDeltaTime * turnSpeed);
+        rb.AddForce(dir * moveSpeed, ForceMode.VelocityChange);
+
+        AddReward(-1 / (float)MaxStep);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
