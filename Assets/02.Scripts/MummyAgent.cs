@@ -37,6 +37,14 @@ public class MummyAgent : Agent
 
         // 물리엔진 초기화
         rb.velocity = rb.angularVelocity = Vector3.zero;
+
+        // 에이전트의 위치를 초기화
+        tr.localPosition = new Vector3(Random.Range(-22.0f, 22.0f),
+                                       0.05f,
+                                       Random.Range(-22.0f, 22.0f));
+
+        // 회전 불규칙하게 변경
+        tr.localRotation = Quaternion.Euler(Vector3.up * Random.Range(0, 360));
     }
 
     public override void CollectObservations(VectorSensor sensor)
