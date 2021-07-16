@@ -131,6 +131,7 @@ public class MummyAgent : Agent
 
         if (coll.collider.CompareTag("WALL"))
         {
+            //rb.velocity = rb.angularVelocity = Vector3.zero;
             AddReward(-0.1f);
         }
     }
