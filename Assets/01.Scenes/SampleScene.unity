@@ -1329,13 +1329,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage
       objectReference: {fileID: 0}
-    - target: {fileID: 1789087782522116003, guid: 5a73afc88a5254919abf0bc1af39d5ac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1789087782522116003, guid: 5a73afc88a5254919abf0bc1af39d5ac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -9.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a73afc88a5254919abf0bc1af39d5ac, type: 3}
