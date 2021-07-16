@@ -112,20 +112,32 @@ public class MummyAgent : Agent
     {
         if (coll.collider.CompareTag("SLIME"))
         {
+            floorRd.material = goodMt;
+
             rb.velocity = rb.angularVelocity = Vector3.zero;
             Destroy(coll.gameObject);
             AddReward(1.0f);
+            StartCoroutine(RevertMaterial());
         }
 
         if (coll.collider.CompareTag("BAD"))
         {
+            floorRd.material = badMt;
+
             AddReward(-1.0f);
             EndEpisode();
+            StartCoroutine(RevertMaterial());
         }
 
         if (coll.collider.CompareTag("WALL"))
         {
             AddReward(-0.1f);
         }
+    }
+
+    IEnumerator RevertMaterial()
+    {
+        yield return new WaitForSeconds(0.2f);
+        floorRd.material = originMt;
     }
 }
