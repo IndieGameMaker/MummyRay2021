@@ -21,6 +21,18 @@ public class StageManager : MonoBehaviour
 
     public void SetStateObject()
     {
+        foreach (var obj in goodList)
+        {
+            Destroy(obj);
+        }
+        foreach (var obj in badList)
+        {
+            Destroy(obj);
+        }
+        // List 초기화
+        goodList.Clear();
+        badList.Clear();
+
         // Good Object 생성
         for (int i = 0; i < goodObjCount; i++)
         {
