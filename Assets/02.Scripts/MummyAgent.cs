@@ -107,4 +107,25 @@ public class MummyAgent : Agent
             actions[1] = 2;
         }
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("SLIME"))
+        {
+            rb.velocity = rb.angularVelocity = Vector3.zero;
+            Destroy(coll.gameObject);
+            AddReward(1.0f);
+        }
+
+        if (coll.collider.CompareTag("BAD"))
+        {
+            AddReward(-1.0f);
+            EndEpisode();
+        }
+
+        if (coll.collider.CompareTag("WALL"))
+        {
+            AddReward(-0.1f);
+        }
+    }
 }
